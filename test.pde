@@ -49,9 +49,9 @@ void loop() {
     Serial.println();
     Serial.println();
  //BMP085
-    lcd.print(bmp.readTemperature());
-    lcd.print(" ");
-    lcd.print(bmp.readPressure()*0.0075006375541921);
+    lcd.print(bmp.readTemperature(), 1); // ", 1" - округление до 1 десятой (0 - до целых)
+    lcd.print("*C ");
+    lcd.print(bmp.readPressure()*0.0075006375541921, 0); // ", 1" - округление до 1 десятой (0 - до целых)
     lcd.print("mmHg");
     Serial.print("Temperature = ");
     Serial.print(bmp.readTemperature());
