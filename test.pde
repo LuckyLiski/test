@@ -23,16 +23,16 @@ void setup() {
   
   if (!bmp.begin()) {
   Serial.println("Could not find a valid BMP085 sensor, check wiring!");
- while (1) {}
+  while (1) {}
   }
 }
   
 void loop() {
  // DS1307
     lcd.setCursor(0,0); // move to the begining of the second line
- //   lcd.print(now.hour(), DEC);
-    lcd.print(":");
-  //  lcd.print(now.minute(), DEC);
+   // lcd.print(now.hour(), DEC);
+   // lcd.print(":");
+   // lcd.print(now.minute(), DEC);
  
     DateTime now = RTC.now();
     Serial.print(now.year(), DEC);
@@ -49,9 +49,10 @@ void loop() {
     Serial.println();
     Serial.println();
  //BMP085
-     lcd.print(bmp.readTemperature());
-     lcd.print(bmp.readPressure()*0.0075006375541921);
-     lcd.print("mmHg");
+    lcd.print(bmp.readTemperature());
+    lcd.print(" ");
+    lcd.print(bmp.readPressure()*0.0075006375541921);
+    lcd.print("mmHg");
     Serial.print("Temperature = ");
     Serial.print(bmp.readTemperature());
     Serial.println(" *C");
@@ -62,7 +63,7 @@ void loop() {
     
     Serial.print("Pressure = ");
     Serial.print(bmp.readPressure()*0.0075006375541921);
-    Serial.println(" mmHg");
+    Serial.println("mmHg");
     
     // Calculate altitude assuming 'standard' barometric
     // pressure of 1013.25 millibar = 101325 Pascal
